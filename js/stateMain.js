@@ -2,9 +2,12 @@ const game = new Phaser.Game(900,526,Phaser.AUTO)
 const StateMain = {
     preload: function(){
         this.load.image('background', 'img/forest.png')
+        this.load.image('mainGuy', 'img/gorilla.png')
     },
     create: function(){
         this.background = this.game.add.sprite(0, 0, 'background')
+        this.mainGuy = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'mainGuy')
+        this.mainGuy.anchor.setTo(0.5, 0.5)
     },
     update: function(){
 

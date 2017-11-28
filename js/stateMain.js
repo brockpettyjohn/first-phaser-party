@@ -8,9 +8,10 @@ const StateMain = {
         this.background = this.game.add.sprite(0, 0, 'background')
         this.mainGuy = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'mainGuy')
         this.mainGuy.anchor.setTo(0.5, 0.5)
+        this.mainGuy.scale.setTo(0.5)
     },
     update: function(){
-
+        this.mainGuy.angle += 0.5
     }
 }
 

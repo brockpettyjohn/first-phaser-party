@@ -5,6 +5,8 @@ const StateMain = {
         this.load.image('mainGuy', 'img/gorilla.png')
     },
     create: function () {
+        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
+        this.speed = 5
         this.cursors = this.game.input.keyboard.createCursorKeys()
         this.background = placeSprite(0, 0, 'background')
         this.mainGuy = placeSprite(100, 100, 'mainGuy')
@@ -13,16 +15,16 @@ const StateMain = {
     },
     update: function () {
         if (this.cursors.up.isDown) {
-            this.mainGuy.y -= 5
+            this.mainGuy.y -= this.speed
         }
         if (this.cursors.down.isDown) {
-            this.mainGuy.y += 5
+            this.mainGuy.y += this.speed
         }
         if (this.cursors.right.isDown) {
-            this.mainGuy.x += 5
+            this.mainGuy.x += this.speed
         }
         if (this.cursors.left.isDown) {
-            this.mainGuy.x -= 5
+            this.mainGuy.x -= this.speed
         }
         this.mainGuy.angle += 0.5
         this.mainGuy.x += 0

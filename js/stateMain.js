@@ -6,12 +6,17 @@ const StateMain = {
     },
     create: function () {
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
+        this.scale.pageAlignHorizontally = true
+        this.scale.pageAlignVertically = true
         this.speed = 5
         this.cursors = this.game.input.keyboard.createCursorKeys()
         this.background = placeSprite(0, 0, 'background')
         this.mainGuy = placeSprite(100, 100, 'mainGuy')
         this.mainGuy.anchor.setTo(0.5, 0.5)
         this.mainGuy.scale.setTo(0.5)
+        this.background.inputEnabled = true
+        this.background.input.onHold = true
+        this.background.events.onInputDown.add(() => {this.doesEventWork(this.input._x, this.input._y)}, this)
     },
     update: function () {
         if (this.cursors.up.isDown) {
@@ -26,10 +31,15 @@ const StateMain = {
         if (this.cursors.left.isDown) {
             this.mainGuy.x -= this.speed
         }
-        this.mainGuy.angle += 0.5
+        this.mainGuy.angle += 0
         this.mainGuy.x += 0
         this.mainGuy.y += 0
 
+    },
+    doesEventWork: function(x, y){
+        console.log(this.input._x)
+        this.mainGuy.x = x
+        this.mainGuy.y = y
     }
 }
 
